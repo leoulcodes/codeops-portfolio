@@ -1,0 +1,7 @@
+
+shampoo,150 
+soap,50
+jacket,2000
+t-shirt,1000
+boots,4000
+

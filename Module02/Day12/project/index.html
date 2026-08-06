@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habesha Eatery</title>
+    <meta name="description" content="Reserve a dine in Addis Ababa.">
+    <style>
+        * {
+            margin:0;
+            padding:0;
+        }
+        .header {
+            display:flex;
+            justify-content: space-between;
+            align-items:center;
+        }
+        .header nav ul{
+            display: flex;
+            list-style-type: none;
+            gap:20px;
+        }
+        .header nav a {
+            text-decoration: none;          /* Removes the underline */
+            color: inherit;                 /* Removes blue link color, using body text color */
+            font-weight: 500;
+}
+        .ul{
+            display:flex;
+            
+        }
+        body{
+            background-color: #f8f9fa;
+            justify-content:center;
+            min-height:100vh;
+            padding:20px;
+        }
+        .form-container{
+            background-color: #ffffff;
+            padding: 32px;
+            border-radius:12px;
+            /* align-items:center; */
+            width:100%
+        }
+        .form-group{
+            margin-bottom:20px;
+        }
+        .form-row{
+            display:flex;
+            gap:16px;
+        }
+        .form-col{
+            flex:1;
+        }
+        label{
+            display:block;
+            color:#4a5170;
+            font-size:14px;
+            font-weight:500;
+            margin-bottom:8px;
+        }
+        input{
+            width:80%;
+            padding : 12px 14px;
+            border: 1.5px solid #8385e0;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #2b3075;
+            outline: none;
+            transition: border-color 0.2s ease-in-out;
+        }
+        .btn{
+            width: 90%;
+            background-color: #6366f1;
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            margin-top: 8px;
+        }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Habesha Eatery</h1>
+        <nav>
+            <ul class="ul">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="form-container">
+            <form action="/reservation" method="POST">
+                
+                    <h3>Reserve a dine at Habesha Eatery</h3>
+                    <div class="form-group">
+                        <label >Full Name</label><br>
+                        <div class="form-row">
+                            <div class="form-col">
+                                <input type="text" id="first-name" placeholder="First" required>
+                            </div>
+                            <div class="form-col">
+                                <input type="text" id="last-name" placeholder="Last" required><br>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            
+                            <div class="form-col">
+                                <label for="num">Phone Number: </label><br>
+                                <input type="number" id="num" pattern="[0-9]{10}" placeholder="##########" required><br>
+                            </div>
+                            <div class="form-col">
+                                <label for="email">Email Address:</label><br>
+                                <input type="email" id="email" placeholder="test@test.com" required><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            
+                            <div class="form-col">
+                                <label for="date">Reservation Date </label><br>
+                                <input type="date" id="date" required><br>
+                            </div>
+                            <div class="form-col">
+                                <label for="time">Reservation Time</label><br>
+                                <input type="time" id="time" required><br>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+
+                    
+
+                    <button type="submit" class="btn">Send</button>
+                
+
+            </form>
+        </section>
+    </main>
+</body>
+</html>

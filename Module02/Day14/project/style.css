@@ -1,0 +1,338 @@
+
+
+/* 1. CSS Variables Palette & Metrics */
+    :root {
+      /* Ethio Telecom Inspired Color Palette */
+      --brand-green: hsl(88, 62%, 40%);
+      --brand-green-hover: hsl(88, 62%, 32%);
+      --brand-blue: hsl(207, 85%, 42%);
+      --brand-yellow: hsl(45, 95%, 50%);
+      
+      --bg-app: hsl(210, 20%, 96%);
+      --bg-surface: hsl(0, 0%, 100%);
+      --text-main: hsl(215, 28%, 17%);
+      --text-muted: hsl(215, 16%, 50%);
+      --border-color: hsl(214, 32%, 91%);
+      
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 16px;
+      --space-lg: 24px;
+      --space-xl: 32px;
+      
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-full: 9999px;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    /* 2. Global Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      line-height: 1.5;
+      background-color: var(--bg-app);
+      color: var(--text-main);
+    }
+
+    /* 3. Grid Page Skeleton (grid-template-areas) */
+    .app {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      grid-template-rows: auto 1fr auto;
+      grid-template-areas:
+        "header  header"
+        "sidebar main"
+        "footer  footer";
+      min-height: 100vh;
+    }
+
+    /* Area Routing */
+    .app-header  { grid-area: header; }
+    .app-sidebar { grid-area: sidebar; }
+    .app-main    { grid-area: main; }
+    .app-footer  { grid-area: footer; }
+
+    /* 4. Sticky Header with Flexbox Navigation */
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      padding: var(--space-md) var(--space-lg);
+    }
+
+    .nav-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--brand-green);
+      text-decoration: none;
+    }
+
+    .brand-logo span {
+      color: var(--brand-blue);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    /* Relative Container for Notification Badge */
+    .notification-btn {
+      position: relative;
+      background: var(--bg-app);
+      border: 1px solid var(--border-color);
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    /* Absolute Positioned Badge Counter */
+    .badge-count {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background-color: hsl(0, 75%, 55%);
+      color: #ffffff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      width: 18px;
+      height: 18px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      background-color: var(--brand-green);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    /* 5. Sidebar Navigation */
+    .app-sidebar {
+      background-color: var(--bg-surface);
+      border-right: 1px solid var(--border-color);
+      padding: var(--space-lg) var(--space-md);
+    }
+
+    .sidebar-menu {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .sidebar-menu a {
+      display: block;
+      padding: var(--space-sm) var(--space-md);
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+    }
+
+    .sidebar-menu a:hover,
+    .sidebar-menu a.active {
+      background-color: hsl(88, 62%, 95%);
+      color: var(--brand-green);
+      font-weight: 600;
+    }
+
+    /* 6. Main Content & Responsive Card Grid */
+    .app-main {
+      padding: var(--space-xl);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xl);
+    }
+
+    /* Toolbar Row using Flexbox */
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+    }
+
+    .welcome-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .telebirr-btn {
+      background-color: var(--brand-blue);
+      color: #ffffff;
+      border: none;
+      padding: var(--space-sm) var(--space-lg);
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Responsive Grid for Package Stat Cards */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-lg);
+    }
+
+    /* Card Component Built with Flexbox */
+    .stat-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      position: relative; /* Relative anchor for status tag */
+      overflow: hidden;
+    }
+
+    /* Absolutely Positioned Package Tag */
+    .package-tag {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background-color: var(--brand-yellow);
+      color: hsl(0, 0%, 15%);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+    }
+
+    .card-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-bottom: var(--space-xs);
+    }
+
+    .card-value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: var(--space-xs);
+    }
+
+    .card-footer-text {
+      margin-top: auto; /* Pins to bottom of flex card */
+      padding-top: var(--space-sm);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-top: 1px dashed var(--border-color);
+    }
+
+    /* Account Action Panel */
+    .action-panel {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+    }
+
+    .action-panel h2 {
+      font-size: 1.1rem;
+      margin-bottom: var(--space-md);
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+    }
+
+    .btn-action {
+      background-color: var(--brand-green);
+      color: #ffffff;
+      border: none;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-action:hover {
+      background-color: var(--brand-green-hover);
+    }
+
+    /* 7. Footer Area */
+    .app-footer {
+      background-color: var(--bg-surface);
+      border-top: 1px solid var(--border-color);
+      padding: var(--space-md) var(--space-lg);
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* 8. Single Responsive Media Query (Collapse layout on mobile) */
+    @media (max-width: 700px) {
+      .app {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "header"
+          "sidebar"
+          "main"
+          "footer";
+      }
+
+      .app-sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .sidebar-menu {
+        flex-direction: row;
+        overflow-x: auto;
+      }
+
+      .sidebar-menu a {
+        white-space: nowrap;
+      }
+
+      .app-main {
+        padding: var(--space-md);
+      }
+    }

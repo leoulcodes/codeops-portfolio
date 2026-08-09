@@ -1,0 +1,189 @@
+
+
+/* CSS Variables */
+    :root {
+      --color-brand: hsl(12, 70%, 45%);
+      --color-brand-hover: hsl(12, 70%, 35%);
+      --color-accent: hsl(43, 85%, 55%);
+      --color-bg: hsl(36, 30%, 96%);
+      --color-surface: hsl(0, 0%, 100%);
+      --color-text-main: hsl(0, 0%, 15%);
+      --color-text-muted: hsl(0, 0%, 40%);
+      --color-border: hsl(0, 0%, 88%);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.1);
+      
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 16px;
+      --space-lg: 24px;
+      --space-xl: 40px;
+    }
+
+    /* Global Reset & Base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      background-color: var(--color-bg);
+      color: var(--color-text-main);
+    }
+
+    /* 1. Grid Page Skeleton (Rows: auto / 1fr / auto) */
+    .page {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      min-height: 100vh;
+    }
+
+    /* 2. Sticky Flexbox Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+      padding: var(--space-md) var(--space-lg);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-brand);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: var(--space-md);
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--color-text-main);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--color-brand);
+    }
+
+    /* Main Content Layout */
+    main {
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      padding: var(--space-xl) var(--space-lg);
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: var(--space-lg);
+      text-align: center;
+    }
+
+    /* 3. Auto-fit Menu Grid */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-lg);
+    }
+
+    /* 4. Flexbox Menu Card with Pinned Bottom Price */
+    .card {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: var(--space-lg);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      position: relative; /* Container for absolute badge positioning */
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* 5. Relative + Absolute Badge Pinning */
+    .badge-popular {
+      position: absolute;
+      top: -10px;
+      right: 12px;
+      background-color: var(--color-accent);
+      color: hsl(0, 0%, 100%);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: var(--space-xs);
+      color: var(--color-brand);
+    }
+
+    .card-description {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-md);
+    }
+
+    /* Price pinned to card bottom using margin-top: auto */
+    .card-price {
+      margin-top: auto;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-text-main);
+      border-top: 1px dashed var(--color-border);
+      padding-top: var(--space-sm);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--color-surface);
+      border-top: 1px solid var(--color-border);
+      text-align: center;
+      padding: var(--space-md);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Mobile Nav Tweaks */
+    @media (max-width: 480px) {
+      .nav-links {
+        gap: var(--space-sm);
+      }
+      .nav-links a {
+        font-size: 0.85rem;
+      }
+    }

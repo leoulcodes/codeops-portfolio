@@ -1,0 +1,1085 @@
+
+
+/* main {
+display: grid;
+grid-template-columns: 1fr;   
+gap: 1rem;
+}
+#menu {
+display: grid;
+grid-template-columns:
+repeat(auto-fill, minmax(180px, 1fr));
+gap: 1rem;
+}
+@media (min-width: 800px) {
+main { grid-template-columns: 2fr 1fr; }
+}
+:root {--green: #2E8B57;   --ink: #1A2433;--line: #E2E8F0;    --radius: 10px;
+}
+.dish {
+border: 1px solid var(--line);
+border-radius: var(--radius);
+padding: 1rem;
+}
+.dish h3 { color: var(--ink); margin: 0; }
+.price  { color: var(--green); font-weight: 700; }  */
+
+
+
+/*---------------------------------*/
+
+/* =========================================================
+   ADDIS EATS
+   Responsive CSS
+   ========================================================= */
+
+:root {
+    --green: #2e8b57;
+    --green-dark: #206b42;
+    --green-light: #e7f6ed;
+
+    --orange: #e76f51;
+    --orange-light: #fff0eb;
+
+    --gold: #e9b949;
+    --gold-light: #fff8df;
+
+    --red: #d9534f;
+
+    --ink: #17211b;
+    --muted: #6b756e;
+
+    --background: #f7f9f7;
+    --card: #ffffff;
+
+    --line: #e1e8e3;
+
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 22px;
+
+    --shadow-sm: 0 4px 15px rgba(24, 43, 31, 0.06);
+    --shadow-md: 0 12px 30px rgba(24, 43, 31, 0.10);
+
+    --transition: 0.25s ease;
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(46, 139, 87, 0.07),
+            transparent 30%
+        ),
+        var(--background);
+
+    color: var(--ink);
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+header {
+    background: rgba(255, 255, 255, 0.92);
+    border-bottom: 1px solid var(--line);
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    backdrop-filter: blur(14px);
+}
+
+.header-content {
+    width: min(1200px, 92%);
+    margin: auto;
+
+    min-height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+/* BRAND */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.brand-icon {
+    width: 48px;
+    height: 48px;
+
+    display: grid;
+    place-items: center;
+
+    background: var(--green-light);
+    border-radius: 14px;
+
+    font-size: 24px;
+
+    box-shadow: inset 0 0 0 1px rgba(46, 139, 87, 0.08);
+}
+
+.brand h1 {
+    font-size: 1.5rem;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+}
+
+.brand p {
+    color: var(--muted);
+    font-size: 0.78rem;
+    margin-top: 3px;
+}
+
+
+/* SEARCH */
+
+.search-wrapper {
+    position: relative;
+    width: min(360px, 100%);
+}
+
+.search-wrapper input {
+    width: 100%;
+
+    border: 1px solid var(--line);
+    border-radius: 999px;
+
+    background: #f8faf8;
+
+    padding: 13px 18px 13px 45px;
+
+    font-size: 0.95rem;
+    outline: none;
+
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition),
+        background var(--transition);
+}
+
+.search-wrapper input:focus {
+    background: white;
+
+    border-color: var(--green);
+
+    box-shadow:
+        0 0 0 4px rgba(46, 139, 87, 0.10);
+}
+
+.search-icon {
+    position: absolute;
+
+    left: 17px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    font-size: 21px;
+    color: var(--muted);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   MAIN LAYOUT
+   ========================================================= */
+
+main {
+    width: min(1200px, 92%);
+    margin: 35px auto 50px;
+
+    display: grid;
+
+    grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
+
+    gap: 30px;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   MENU
+   ========================================================= */
+
+#menu {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(190px, 1fr)
+        );
+
+    gap: 18px;
+}
+
+
+/* =========================================================
+   DISH CARD
+   ========================================================= */
+
+.dish {
+    position: relative;
+
+    overflow: hidden;
+
+    background: var(--card);
+
+    border: 1px solid var(--line);
+
+    border-radius: var(--radius-md);
+
+    padding: 20px;
+
+    box-shadow: var(--shadow-sm);
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 235px;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+
+    animation: cardEnter 0.5s ease both;
+}
+
+
+/* stagger animation */
+
+.dish:nth-child(2) {
+    animation-delay: 0.04s;
+}
+
+.dish:nth-child(3) {
+    animation-delay: 0.08s;
+}
+
+.dish:nth-child(4) {
+    animation-delay: 0.12s;
+}
+
+.dish:nth-child(5) {
+    animation-delay: 0.16s;
+}
+
+.dish:nth-child(6) {
+    animation-delay: 0.20s;
+}
+
+.dish:nth-child(7) {
+    animation-delay: 0.24s;
+}
+
+.dish:nth-child(8) {
+    animation-delay: 0.28s;
+}
+
+.dish:nth-child(9) {
+    animation-delay: 0.32s;
+}
+
+.dish:nth-child(10) {
+    animation-delay: 0.36s;
+}
+
+
+.dish:hover {
+    transform: translateY(-7px);
+
+    border-color: rgba(46, 139, 87, 0.25);
+
+    box-shadow: var(--shadow-md);
+}
+
+
+/* decorative circle */
+
+.dish::before {
+    content: "";
+
+    position: absolute;
+
+    width: 120px;
+    height: 120px;
+
+    border-radius: 50%;
+
+    background: var(--green-light);
+
+    top: -55px;
+    right: -45px;
+
+    transition: transform 0.4s ease;
+}
+
+.dish:hover::before {
+    transform: scale(1.25);
+}
+
+
+/* FOOD ICON */
+
+.dish-visual {
+    width: 65px;
+    height: 65px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f3faf5,
+            #e5f3e9
+        );
+
+    font-size: 31px;
+
+    margin-bottom: 16px;
+
+    position: relative;
+    z-index: 1;
+
+    transition: transform 0.3s ease;
+}
+
+.dish:hover .dish-visual {
+    transform:
+        rotate(-5deg)
+        scale(1.08);
+}
+
+
+/* CATEGORY */
+
+.category {
+    display: inline-flex;
+    align-items: center;
+
+    width: fit-content;
+
+    padding: 4px 9px;
+
+    border-radius: 999px;
+
+    background: #f2f5f3;
+
+    color: var(--muted);
+
+    font-size: 0.68rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+    margin-bottom: 7px;
+}
+
+
+/* DISH NAME */
+
+.dish h3 {
+    font-size: 1.08rem;
+
+    line-height: 1.3;
+
+    margin-bottom: 6px;
+
+    position: relative;
+    z-index: 1;
+}
+
+
+/* DESCRIPTION */
+
+.dish-description {
+    color: var(--muted);
+
+    font-size: 0.78rem;
+
+    line-height: 1.45;
+
+    margin-bottom: 12px;
+}
+
+
+/* PRICE */
+
+.price {
+    color: var(--green);
+
+    font-size: 1.05rem;
+
+    font-weight: 800;
+
+    margin-top: auto;
+
+    margin-bottom: 12px;
+}
+
+
+/* SPICY */
+
+.spicy {
+    color: var(--red);
+
+    font-size: 0.72rem;
+
+    font-weight: 700;
+
+    margin-bottom: 10px;
+}
+
+
+/* ADD BUTTON */
+
+.add {
+    border: none;
+
+    background: var(--green);
+
+    color: white;
+
+    border-radius: 11px;
+
+    padding: 11px 15px;
+
+    width: 100%;
+
+    font-size: 0.88rem;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background var(--transition),
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.add:hover {
+    background: var(--green-dark);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 15px rgba(46, 139, 87, 0.22);
+}
+
+.add:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================================================
+   CART
+   ========================================================= */
+
+#cart {
+    background: white;
+
+    border: 1px solid var(--line);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-md);
+
+    padding: 22px;
+
+    position: sticky;
+    top: 115px;
+
+    animation: cartEnter 0.6s ease both;
+}
+
+.cart-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding-bottom: 17px;
+
+    border-bottom: 1px solid var(--line);
+
+    margin-bottom: 17px;
+}
+
+.cart-header h2 {
+    font-size: 1.2rem;
+}
+
+.cart-count {
+    min-width: 28px;
+    height: 28px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--green-light);
+
+    color: var(--green);
+
+    font-size: 0.78rem;
+
+    font-weight: 800;
+}
+
+
+/* CART LIST */
+
+.cart-list {
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+
+    max-height: 390px;
+
+    overflow-y: auto;
+
+    padding-right: 3px;
+}
+
+
+/* scrollbar */
+
+.cart-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.cart-list::-webkit-scrollbar-thumb {
+    background: #d6dfd9;
+    border-radius: 20px;
+}
+
+
+/* CART ITEM */
+
+.cart-item {
+    display: grid;
+
+    grid-template-columns: 1fr auto;
+
+    gap: 10px;
+
+    padding: 13px;
+
+    background: #f8faf8;
+
+    border: 1px solid #edf1ee;
+
+    border-radius: 13px;
+
+    animation: cartItemEnter 0.3s ease both;
+}
+
+.cart-item-info {
+    min-width: 0;
+}
+
+.cart-item-name {
+    font-size: 0.87rem;
+
+    font-weight: 700;
+
+    margin-bottom: 4px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.cart-item-price {
+    color: var(--green);
+
+    font-size: 0.78rem;
+
+    font-weight: 700;
+}
+
+
+/* QUANTITY */
+
+.quantity {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-top: 9px;
+}
+
+.quantity button {
+    width: 26px;
+    height: 26px;
+
+    border: 1px solid var(--line);
+
+    background: white;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-weight: 800;
+
+    color: var(--ink);
+
+    transition:
+        background var(--transition),
+        color var(--transition),
+        transform var(--transition);
+}
+
+.quantity button:hover {
+    background: var(--green);
+
+    color: white;
+
+    border-color: var(--green);
+}
+
+.quantity button:active {
+    transform: scale(0.9);
+}
+
+.quantity span {
+    min-width: 18px;
+
+    text-align: center;
+
+    font-size: 0.82rem;
+
+    font-weight: 800;
+}
+
+
+/* ITEM TOTAL */
+
+.item-total {
+    align-self: center;
+
+    color: var(--ink);
+
+    font-size: 0.83rem;
+
+    font-weight: 800;
+}
+
+
+/* REMOVE */
+
+.remove {
+    border: none;
+
+    background: transparent;
+
+    color: #9a4a47;
+
+    font-size: 0.7rem;
+
+    cursor: pointer;
+
+    margin-top: 5px;
+
+    padding: 0;
+}
+
+.remove:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   CART TOTAL
+   ========================================================= */
+
+.cart-total {
+    border-top: 1px solid var(--line);
+
+    margin-top: 18px;
+
+    padding-top: 17px;
+}
+
+.total-row {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 14px;
+}
+
+.total-label {
+    color: var(--muted);
+
+    font-size: 0.9rem;
+}
+
+.total-price {
+    color: var(--green);
+
+    font-size: 1.35rem;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   EMPTY CART
+   ========================================================= */
+
+.empty-cart {
+    text-align: center;
+
+    padding: 40px 15px;
+
+    color: var(--muted);
+}
+
+.empty-cart-icon {
+    width: 65px;
+    height: 65px;
+
+    margin: 0 auto 14px;
+
+    display: grid;
+    place-items: center;
+
+    background: var(--green-light);
+
+    border-radius: 50%;
+
+    font-size: 27px;
+
+    animation: float 3s ease-in-out infinite;
+}
+
+.empty-cart h3 {
+    color: var(--ink);
+
+    font-size: 1rem;
+
+    margin-bottom: 5px;
+}
+
+.empty-cart p {
+    font-size: 0.8rem;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 0.78rem;
+
+    padding: 25px;
+
+    border-top: 1px solid var(--line);
+
+    background: white;
+}
+
+
+/* =========================================================
+   NO RESULTS
+   ========================================================= */
+
+.no-results {
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    padding: 70px 20px;
+
+    color: var(--muted);
+}
+
+.no-results-icon {
+    font-size: 45px;
+
+    margin-bottom: 15px;
+}
+
+.no-results h2 {
+    color: var(--ink);
+
+    margin-bottom: 5px;
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.loading {
+    grid-column: 1 / -1;
+
+    min-height: 300px;
+
+    display: grid;
+
+    place-items: center;
+
+    color: var(--muted);
+}
+
+.loading-content {
+    text-align: center;
+}
+
+.spinner {
+    width: 42px;
+    height: 42px;
+
+    border: 4px solid #e5eee8;
+
+    border-top-color: var(--green);
+
+    border-radius: 50%;
+
+    margin: 0 auto 15px;
+
+    animation: spin 0.8s linear infinite;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes cardEnter {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes cartEnter {
+
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+@keyframes cartItemEnter {
+
+    from {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+@keyframes spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    #cart {
+        position: static;
+    }
+
+    .cart-list {
+        max-height: none;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .header-content {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        padding: 16px 0;
+
+        gap: 15px;
+    }
+
+    .brand {
+        justify-content: center;
+    }
+
+    .search-wrapper {
+        width: 100%;
+    }
+
+    main {
+        width: 94%;
+
+        margin-top: 22px;
+
+        gap: 22px;
+    }
+
+    #menu {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        gap: 12px;
+    }
+
+    .dish {
+        padding: 15px;
+
+        min-height: 220px;
+    }
+
+    .dish-visual {
+        width: 55px;
+        height: 55px;
+
+        font-size: 26px;
+    }
+
+    .dish h3 {
+        font-size: 0.95rem;
+    }
+
+    .price {
+        font-size: 0.95rem;
+    }
+
+    .add {
+        padding: 9px 10px;
+
+        font-size: 0.78rem;
+    }
+
+    #cart {
+        padding: 18px;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 390px) {
+
+    #menu {
+        grid-template-columns: 1fr;
+    }
+
+    .dish {
+        min-height: 190px;
+    }
+}
